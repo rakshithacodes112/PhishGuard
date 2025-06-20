@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>PhishDetect.io</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="static/assets/img/logoimage.jpg" rel="icon">
+  <link href="static/assets/img/logoimage.jpg" rel="apple-touch-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&display=swap" rel="stylesheet">
+   
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Template Main CSS File -->
+  <link href="static/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+      <a href="{{ url_for('home') }}" class="logo mr-auto"><img src="static/assets/img/logoimage.jpg" alt="" class="img-fluid"></a>
+
+      <h1 class="logo mr-auto" style=" font-family: Cormorant Garamond, serif;font-weight: 700"><a href="{{ url_for('home') }}">phishdetect.io</a></h1>
+
+      <!-- Uncomment below if you prefer to use an image logo -->
+      
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a onclick="scrolldiv()">About</a></li>
+          <!--<li><a href="{{ url_for('usecases') }}" target="_blank" rel="no-openner no-referrer">Usecases</a></li>-->
+          
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+
+    <div class="container d-flex flex-column align-items-center justify-content-center" data-aos="fade-up">
+      
+            <form action="/result" method="POST" role="form" class="form">
+        <div class="row no-gutters">
+          <div class="col-md-6 form-group pr-md-1">
+              <input type="url" name="name" class="form-control" id="name" placeholder="Enter a URL link in format http or https" required>
+          </div>
+        </div>
+        <div class="text-center" ><button type="submit">Scan URL</button></div>
+        <p>
+          {% if name %}
+          <b><p>{{name[0]}}</p></b>
+          <h2 style="color:#fff;">Website is {{name[1]}} to use</h2><br>
+            {% if name[3] %}
+            <button class="button1" onclick="window.open('{{name[0]}}')" target="_blank" >{{name[2]}}</button><br>
+            {% else %}
+            <button class="button2" onclick="window.open('{{name[0]}}')" target="_blank" >{{name[2]}}</button><br>
+            {% endif %}
+          {% endif %}
+      </p>
+      </form> 
+      <img src="static\assets\img\gifweb.gif" class="img-fluid hero-img" alt="" data-aos="zoom-in" data-aos-delay="150"><br><br><br>
+    </div>
+    <script>
+        
+            /*let x = '{{xx}}';
+            let num = x*100;
+            if (0<=x && x<0.50){
+                num = 100-num;
+            }
+            let txtx = num.toString();
+            if(x<=1 && x>=0.50){
+                var label = "Website is "+txtx +"% safe to use...";
+                document.getElementById("prediction").innerHTML = label;
+                document.getElementById("button1").style.display="block";
+            }
+            else if (0<=x && x<0.50){
+                var label = "Website is "+txtx +"% unsafe to use..."
+                document.getElementById("prediction").innerHTML = label ;
+                document.getElementById("button2").style.display="block";
+            }*/
+        
+    </script>
+  </section><!-- End Hero -->
+
+     <!-- ======= Frequently Asked Questions Section ======= -->
+     <section id="faq" class="faq" style="background-color: #182838 ;">
+        <div class="container" data-aos="fade-up">
+  
+          <div class="faq-list">
+            <ul>
+              <li data-aos="fade-up" data-aos="fade-up" data-aos-delay="100">
+                <a data-toggle="collapse" class="collapse" href="#faq-list-1"> What is PhishDetect<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                <div id="faq-list-1" class="collapse show" data-parent=".faq-list">
+                  <p>
+                    PhishDetect is a tool designed to help users identify and avoid phishing websites by scanning URLs and analyzing them for signs of phishing.
+                  </p>
+                </div>
+              </li>
+  
+              <li data-aos="fade-up" data-aos-delay="200">
+                <a data-toggle="collapse" href="#faq-list-2" class="collapsed">How does PhishDetect work <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                <div id="faq-list-2" class="collapse" data-parent=".faq-list">
+                  <p>
+                    PhishDetect works by analyzing the provided URL for various characteristics common in phishing websites, such as unusual domain names, suspicious patterns, and known phishing indicators. It uses a combination of heuristic analysis, blacklist checking, and machine learning algorithms to determine the likelihood of a website being a phishing site.<br><br>
+                  </p>
+                </div>
+              </li>    
+
+              <li data-aos="fade-up" data-aos-delay="200">
+                <a data-toggle="collapse" href="#faq-list-3" class="collapsed">What should I do if PhishDetect flags a website as phishing<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                <div id="faq-list-3" class="collapse" data-parent=".faq-list">
+                  <p>
+                    If PhishDetect flags a website as phishing, it is recommended to avoid entering any personal information on the site and to close the browser window. You can also report the site to your browser's phishing protection service and to other relevant authorities.
+                  </p>
+                </div>
+              </li>              
+              
+              <li data-aos="fade-up" data-aos-delay="200">
+                <a data-toggle="collapse" href="#faq-list-4" class="collapsed"> Can the service detect all phishing websites<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                <div id="faq-list-4" class="collapse" data-parent=".faq-list">
+                  <p>
+                    While our service is designed to detect a wide range of phishing attempts, it's possible that new or highly sophisticated phishing sites may evade detection. We continually update our algorithms to improve accuracy.
+                  </p>
+                </div>
+              </li>              
+              
+              <li data-aos="fade-up" data-aos-delay="200">
+                <a data-toggle="collapse" href="#faq-list-5" class="collapsed">What is phishing and why should I be concerned<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                <div id="faq-list-5" class="collapse" data-parent=".faq-list">
+                  <p>
+                    Phishing is a cyber attack where attackers trick individuals into revealing sensitive information like passwords and credit card numbers by pretending to be a legitimate entity. It can lead to identity theft, financial loss, and other serious consequences.
+                  </p>
+                </div>
+              </li>              
+
+            </ul>
+          </div>
+  
+        </div>
+      </section><!-- End Frequently Asked Questions Section -->
+
+  <main id="main">    
+          
+          <!-- ======= about Section ======= -->
+        <section id="about" class="about" >
+            <div class="container" data-aos="fade-up">
+      
+              <div class="section-title">
+                
+                    <h3 style="font-family: Alegreya Sans SC, sans-serif;">About Us</h3>
+                    <p>This project is a collaborative effort by third-year Computer Science students from Siddaganga Institute of Technology, Tumakuru.<br><br><h5 style="color:white;font-family: Alegreya Sans SC, sans-serif"><b>Neha Suresh<br>Pavana Ganga S<br>Rakshitha R<br><br><h6 style="font-family: Alegreya Sans SC, sans-serif">Under the guidance of</h6><h5 style="font-family: Alegreya Sans SC, sans-serif">Dr. Ashwini B.P.</h5></b></p></p>
+              </div>
+      
+            </div>
+          </section><!-- End about Section -->
+  
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+ 
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+  <!-- <div id="preloader"></div> -->
+
+  <!-- Vendor JS Files -->
+  <script src="static/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="static/assets/vendor/venobox/venobox.min.js"></script>
+  <script src="static/assets/vendor/aos/aos.js"></script>
+  <script>
+    function scrolldiv() {
+        var elem = document.getElementById("about");
+        elem.scrollIntoView();
+    }
+  </script>
+
+  <!-- Template Main JS File -->
+  <script src="static/assets/js/main.js"></script>
+
+</body>
+
+</html>
