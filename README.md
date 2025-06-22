@@ -92,4 +92,3 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-Let me know if you'd like a short GIF/demo or badges for GitHub (build status, license, etc.) included!
