@@ -1,7 +1,3 @@
-Here’s a well-structured `README.md` content for your **PhishGuard** project:
-
----
-
 # 🛡️ PhishGuard – Phishing Website Detection Web App
 
 **PhishGuard** is a web-based application that helps users detect and avoid phishing websites. Powered by machine learning, it analyzes URLs and flags suspicious or potentially harmful links in real time. This project aims to raise cybersecurity awareness and prevent users from falling victim to online fraud.
@@ -76,12 +72,6 @@ PhishGuard/
 * Model retraining on live phishing datasets
 * Integration with threat intelligence APIs (e.g., VirusTotal, PhishTank)
 * Real-time monitoring and reporting dashboard
-
----
-
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE).
 
 ---
 
